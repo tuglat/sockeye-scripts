@@ -24,6 +24,8 @@ def main(args):
             factor_list.append(SubwordFactor())
         elif factor == 'mask':
             factor_list.append(MaskFactor())
+        elif factor == 'number':
+            factor_list.append(NumberFactor())
         else:
             raise Exception('No such factor "{}"'.format(factor))
 

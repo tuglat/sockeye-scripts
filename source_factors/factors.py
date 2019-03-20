@@ -149,3 +149,17 @@ class MaskFactor(Factor):
     def compute_json(self, jobj: Dict) -> str:
         return self.compute(jobj['text'])
         
+
+
+class NumberFactor(Factor):
+    def __init__(self):
+        self.mask_regex = re.compile('[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?')
+
+    def is_mask(self, token: str):
+        return '1' if self.mask_regex.match(token) else '0'
+
+    def compute(self, segment: str) -> str:
+        return ' '.join([self.is_mask(token) for token in segment.split()])
+
+    def compute_json(self, jobj: Dict) -> str:
+        return self.compute(jobj['num_text'])
