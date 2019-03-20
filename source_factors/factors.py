@@ -162,4 +162,4 @@ class NumberFactor(Factor):
         return ' '.join([self.is_mask(token) for token in segment.split()])
 
     def compute_json(self, jobj: Dict) -> str:
-        return self.compute(jobj['num_text'])
+        return self.compute(jobj['tok_text'])
