@@ -153,7 +153,8 @@ class MaskFactor(Factor):
 
 class NumberFactor(Factor):
     def __init__(self):
-        self.mask_regex = re.compile('[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?')
+        #self.mask_regex = re.compile('[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?')
+        self.mask_regex = re.compile('(__NUMBER(_\d+)?__)|([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)') # this should work whether or not we do masking
 
     def is_mask(self, token: str):
         return '1' if self.mask_regex.match(token) else '0'
